@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba Quarkus</title>
+</head>
+<body>
+    <h1>Mi página web con Quarkus</h1>
+    <button id="btn">Obtener mensaje</button>
+    <p id="mensaje"></p>
+
+    <script>
+        document.getElementById('btn').addEventListener('click', () => {
+            fetch('/hello')  // llama al endpoint de Quarkus
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('mensaje').innerText = data.message;
+                })
+                .catch(err => console.error(err));
+        });
+    </script>
+</body>
+</html>
+
